@@ -4,7 +4,41 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Daily Betting Tips - Sahidoona</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 0;
+      color: #222;
+    }
+    header {
+      background: #006400;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    main {
+      padding: 20px;
+    }
+    .tip {
+      background: white;
+      border: 1px solid #ddd;
+      margin-bottom: 15px;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    .tip h3 {
+      margin-top: 0;
+    }
+    footer {
+      text-align: center;
+      padding: 10px;
+      background: #eee;
+      font-size: 14px;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -13,13 +47,44 @@
   </header>
 
   <main id="tips-container">
-    <!-- Tips will be loaded here -->
+    <!-- Tips will be injected here -->
   </main>
 
   <footer>
     <p>&copy; 2025 Sahidoona. All rights reserved.</p>
   </footer>
 
-  <script src="tips.js"></script>
+  <script>
+    const tips = [
+      {
+        match: "Liverpool vs Manchester United",
+        prediction: "1X",
+        reason: "Liverpool are unbeaten in last 6 home games. United poor away form."
+      },
+      {
+        match: "Barcelona vs Sevilla",
+        prediction: "Over 2.5",
+        reason: "Both teams average 3+ goals per match this season."
+      },
+      {
+        match: "Juventus vs AC Milan",
+        prediction: "Correct Score: 2-1",
+        reason: "Historically tight matches, but Juventus home advantage gives them edge."
+      }
+    ];
+
+    const container = document.getElementById('tips-container');
+
+    tips.forEach(tip => {
+      const div = document.createElement('div');
+      div.className = 'tip';
+      div.innerHTML = `
+        <h3>${tip.match}</h3>
+        <p><strong>Prediction:</strong> ${tip.prediction}</p>
+        <p><em>Reason:</em> ${tip.reason}</p>
+      `;
+      container.appendChild(div);
+    });
+  </script>
 </body>
 </html>
